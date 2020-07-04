@@ -1,0 +1,162 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head><title>Stock Market Simulator</title></head>
+<body>
+<h1> <span style="
+    padding: 2%;
+" th:text="${appName}"></span></h1>
+
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/market-control.css" rel="stylesheet">
+
+<fieldset class="scheduler-border " style="width: 65%">
+    <legend class="scheduler-border">Traders</legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-13">
+                <div data-role="dynamic-fields" id='trader-records'>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="symbol">Symbol</label>
+                            <select class="form-control" id="symbol">
+                                <option selected>FB</option>
+                                <option>AMZN</option>
+                                <option>TSLA</option>
+                                <option>BA</option>
+                                <option>AAPL</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderType">Type</label>
+                            <select class="form-control" id="orderType">
+                                <option selected>Buy</option>
+                                <option>Sell</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size</label>
+                            <input class="form-control" id="size" type="text" value="0-50">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input class="form-control" id="price" type="text" value="0-100">
+                        </div>
+                        <div class="form-group">
+                            <label for="interval">Interval (ms)</label>
+                            <input class="form-control" id="interval" type="text" value="500-1000">
+                        </div>
+                        <button class="btn btn-danger" data-role="remove">
+                            <span class="glyphicon glyphicon-remove">X</span>
+                        </button>
+                        <button class="btn btn-primary" data-role="add">
+                            <span class="glyphicon glyphicon-plus">+</span>
+                        </button>
+                        <div><label id="traderState" style="display:none;
+                                margin-left: 15px;white-space:nowrap;
+                            ">Throughput:</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<div class="main-container">
+    <div class="left">
+        <fieldset class="scheduler-border inline" style="
+    text-align-last: center;
+    width: 95%;
+">
+            <legend class="scheduler-border">Order Book</legend>
+            <section class="project-tab" id="tabs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12" id="tabsDiv">
+                            <nav>
+                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    <a aria-controls="nav-home" aria-selected="true" class="nav-item nav-link active" data-toggle="tab"
+                                       href="#nav-home" id="nav-fb-tab" role="tab">FB</a>
+                                    <a aria-controls="nav-profile" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                                       href="#nav-profile" id="nav-amzn-tab" role="tab">AMZN</a>
+                                    <a aria-controls="nav-contact" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                                       href="#nav-contact" id="nav-tsla-tab" role="tab">TSLA</a>
+                                    <a aria-controls="nav-contact" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                                       href="#nav-contact" id="nav-ba-tab" role="tab">BA</a>
+                                    <a aria-controls="nav-contact" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                                       href="#nav-contact" id="nav-aapl-tab" role="tab">AAPL</a>
+
+
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div aria-labelledby="nav-fb-tab" class="tab-pane fade show active" id="nav-home"
+                                     role="tabpanel">
+                                    <table cellspacing="0" class="table" id="bidsTable"
+                                           style="width: 50%;float:left;background-color: #ffdddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Bid Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr></tr>
+                                        </tbody>
+                                    </table>
+                                    <table cellspacing="0" class="table" id="offersTable"
+                                           style="width: 50%;float:left; background-color: #deffe4;">
+                                        <thead>
+                                        <tr>
+                                            <th>Ask Price</th>
+                                            <th>Size</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </fieldset>
+    </div>
+    <div class="right">
+        <div class="main-container">
+            <div class="left">
+                <fieldset class="scheduler-border inline">
+                    <legend class="scheduler-border">Trade Ledger</legend>
+                    <table cellspacing="0" class="table" id='tradesTable'
+                           style="width:fit-content;float:left">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Symbol</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="right">
+                <fieldset class="scheduler-border inline">
+                    <legend class="scheduler-border">Exchange Engine Stats</legend>
+                    <pairlist id="engine-stats"></pairlist>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery.js" type="application/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="market-control.js" type="application/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 5.5em 1.5em 1.1em !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+    width: 92%;
+}
+
+legend.scheduler-border {
+
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: fit-content;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.form-control {
+    margin: 1px 5px;
+}
+
+.form-group {
+    margin: 1px 5px;
+}
+
+html, body {
+    padding-top: 20px;
+}
+
+[data-role="dynamic-fields"] > .form-inline + .form-inline {
+    margin-top: 0.5em;
+}
+
+[data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+    display: none;
+}
+
+[data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+    display: inline-block;
+}
+
+[data-role="dynamic-fields"] > .form-inline:last-child [data-role="remove"] {
+    display: none;
+}
+
+.container {
+    margin-left: initial;
+}
+
+.project-tab {
+    padding: 0% 0%;
+    margin-top: 0%;
+}
+
+.project-tab #tabs {
+    background: #007b5e;
+    color: #eee;
+}
+
+.project-tab #tabs h6.section-title {
+    color: #eee;
+}
+
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project-tab .nav-link:hover {
+    border: none;
+}
+
+.project-tab thead {
+    background: #f3f3f3;
+    color: #333;
+}
+
+.project-tab a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.main-container {
+    width: 100%;
+}
+
+.left {
+    float: left;
+    width: fit-content;
+}
+
+.right {
+    float: left;
+    width: fit-content;
+}
+
+.form-inline {
+    flex-flow: unset;
+}
+
+#tradesTable tbody tr:nth-child(2n+1) {
+    background: #ffdddd;
+}
+
+#tradesTable tbody tr:nth-child(2n) {
+    background: #deffe4;
+}
